@@ -62,6 +62,9 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+         // A "waterfall" refers to a sequence of network requests that depend on the completion of previous requests.
+        //  A common way to avoid waterfalls is to initiate all data requests at the same time - in parallel - and wait for all of them to complete.
+        // Use a native JavaScript pattern that can be applied to any library or framework
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
